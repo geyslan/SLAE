@@ -1,7 +1,7 @@
 /*
 
  Shell Bind TCP - C Language
- Linux/x86 - IA-32
+ Linux/x86
 
  Written in 2013 by Geyslan G. Bem, Hacking bits
 
