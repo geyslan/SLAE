@@ -55,8 +55,7 @@ _start:
 
 	; Setting port number
 
-	push WORD 0x672b	; port number 11111
-	pop ebp			; ebp now contains port number
+	mov bp, 0x672b		; port number 11111
 
 
 	; Creating the socket file descriptor
