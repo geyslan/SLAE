@@ -55,7 +55,7 @@ _start:
 
 	; Setting port number
 
-	mov bp, 0x672b		; port number 11111
+	mov bp, 0x672b		; port in byte reverse order = 11111
 
 
 	; Creating the socket file descriptor
