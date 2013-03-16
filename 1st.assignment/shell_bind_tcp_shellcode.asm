@@ -31,7 +31,7 @@
 ;                 similar license to this one.
 ;
 ;
-; shell_bind_tcp_asm_shellcode
+; shell_bind_tcp_shellcode
 ;
 ; * 103 bytes
 ; * null-bytes free

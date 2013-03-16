@@ -31,7 +31,7 @@
 ;                 similar license to this one.
 ;
 ;
-; shell_bind_tcp_asm
+; shell_bind_tcp
 ;
 ; * avoids SIGSEGV when reconnecting, setting SO_REUSEADDR (TIME_WAIT)
 ;
