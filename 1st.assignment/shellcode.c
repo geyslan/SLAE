@@ -35,7 +35,7 @@
 
  shell_bind_tcp_shellcode
 
- * 104 bytes
+ * 103 bytes
  * null-bytes free
  * avoids SIGSEGV when reconnecting, setting SO_REUSEADDR (TIME_WAIT)
  * the port number is easily changeable (3th and 4th bytes of the shellcode)
