@@ -153,7 +153,7 @@ finalint:
 	xchg eax, ebx
 
 
-	; Creating a interchangeably copy of the 3 file descriptors (stdin, stdout, errno)
+	; Creating a interchangeably copy of the 3 file descriptors (stdin, stdout, stderr)
 	;dup2 (clientfd, fd)
 
 	mov ecx, edi

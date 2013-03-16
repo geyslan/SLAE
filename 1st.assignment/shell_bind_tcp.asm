@@ -150,7 +150,7 @@ _start:
 	mov edx, eax		; saving the returned socket fd (client)
 
 
-	; Creating a interchangeably copy of the 3 file descriptors (stdin, stdout, errno)
+	; Creating a interchangeably copy of the 3 file descriptors (stdin, stdout, stderr)
 	; int dup2(int oldfd, int newfd);
 	; dup2(clientfd, ...)
 
@@ -166,7 +166,7 @@ _start:
         int 0x80
 
         mov eax, 63
-        mov ecx, 2		; errno file descriptor
+        mov ecx, 2		; stderr file descriptor
 
         int 0x80
 
