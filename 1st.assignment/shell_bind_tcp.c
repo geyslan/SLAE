@@ -38,8 +38,8 @@
  * avoids SIGSEGV when reconnecting, setting SO_REUSEADDR (TIME_WAIT)
 
 
- # gcc -m32 shell_bind_tcp_c.c -o shell_bind_tcp_c
- # ./shell_bind_tcp_c
+ # gcc -m32 shell_bind_tcp.c -o shell_bind_tcp
+ # ./shell_bind_tcp
 
  Testing
  # nc 127.0.0.1 11111

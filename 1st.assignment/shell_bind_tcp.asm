@@ -36,9 +36,9 @@
 ; * avoids SIGSEGV when reconnecting, setting SO_REUSEADDR (TIME_WAIT)
 ;
 ;
-; # nasm -f elf32 shell_bind_tcp_asm.asm -o shell_bind_tcp_asm.o -g
-; # ld -m elf_i386 shell_bind_tcp_asm.o -o shell_bind_tcp_asm
-; # ./shell_bind_tcp_asm
+; # nasm -f elf32 shell_bind_tcp.asm -o shell_bind_tcp.o -g
+; # ld -m elf_i386 shell_bind_tcp.o -o shell_bind_tcp
+; # ./shell_bind_tcp
 ;
 ; Testing
 ; # nc 127.0.0.1 11111

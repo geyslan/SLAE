@@ -39,9 +39,9 @@
 ; * the port number is easily changeable (3th and 4th bytes of the shellcode)
 ;
 ;
-; # nasm -f elf32 shell_bind_tcp_asm_shellcode.asm -o shell_bind_tcp_asm_shellcode.o -g
-; # ld -m elf_i386 shell_bind_tcp_asm_shellcode.o -o shell_bind_tcp_asm_shellcode
-; # ./shell_bind_tcp_asm_shellcode
+; # nasm -f elf32 shell_bind_tcp_shellcode.asm -o shell_bind_tcp_shellcode.o -g
+; # ld -m elf_i386 shell_bind_tcp_shellcode.o -o shell_bind_tcp_shellcode
+; # ./shell_bind_tcp_shellcode
 ;
 ; Testing
 ; # nc 127.0.0.1 11111
