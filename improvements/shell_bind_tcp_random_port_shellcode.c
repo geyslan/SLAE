@@ -45,7 +45,8 @@
 
  * 65 bytes
  * null-bytes free
- * the port number is set by the system and can be discovered using nmap (see http://manuals.ts.fujitsu.com/file/4686/posix_s.pdf, page 23, section 2.6.6)
+ * the port number is set by the system and can be discovered using nmap
+   (see http://manuals.ts.fujitsu.com/file/4686/posix_s.pdf, page 23, section 2.6.6)
 
 
  # gcc -m32 -fno-stack-protector -z execstack shell_bind_tcp_random_port_shellcode.c -o shell_bind_tcp_random_port_shellcode

