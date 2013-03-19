@@ -54,7 +54,7 @@
 
  Testing
  # netstat -anp | grep shell
- # nmap -sS 127.0.0.1 -p-  (It's necessary to use the TCP SYS scan option [-sS]; thus avoids that nmap connects to the port open by shellcode)
+ # nmap -sS 127.0.0.1 -p-  (It's necessary to use the TCP SYN scan option [-sS]; thus avoids that nmap connects to the port open by shellcode)
  # nc 127.0.0.1 port
 
 */
