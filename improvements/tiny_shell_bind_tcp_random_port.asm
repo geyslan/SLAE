@@ -41,7 +41,6 @@
 ;
 ; # nasm -f elf32 tiny_shell_bind_tcp_random_port.asm
 ; # ld -m elf_i386 tiny_shell_bind_tcp_random_port.o -o tiny_shell_bind_tcp_random_port
-; # ./tiny_shell_bind_tcp
 ;
 ; Testing
 ; # ./tiny_shell_bind_tcp_random_port
