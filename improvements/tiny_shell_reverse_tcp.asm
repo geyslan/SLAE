@@ -43,7 +43,7 @@
 ; # ld -m elf_i386 tiny_shell_reverse_tcp.o -o tiny_shell_reverse_tcp
 ;
 ; Testing
-; # nc 127.1.1.1 11111
+; # nc -l 127.1.1.1 11111
 ; # ./tiny_shell_reverse_tcp
 
 

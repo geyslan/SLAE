@@ -43,7 +43,10 @@
 
 
  # gcc -m32 -fno-stack-protector -z execstack tiny_shell_bind_tcp_shellcode.c -o tiny_shell_bind_tcp_shellcode
+
+ Testing
  # ./tiny_shell_bind_tcp_shellcode
+ # nc 127.0.0.1 11111
 
 */
 

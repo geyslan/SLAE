@@ -39,11 +39,16 @@
  tiny_shell_bind_tcp_random_port_shellcode
 
  * 57 bytes
- * null-free if the port is
+ * null-free
 
 
  # gcc -m32 -fno-stack-protector -z execstack tiny_shell_bind_tcp_random_port_shellcode.c -o tiny_shell_bind_tcp_random_port_shellcode
+
+ Testing
  # ./tiny_shell_bind_tcp_random_port_shellcode
+ # netstat -anp | grep shell
+ # nmap -sS 127.0.0.1 -p-  (It's necessary to use the TCP SYN scan option [-sS]; thus avoids that nmap connects to th$
+ # nc 127.0.0.1 port
 
 */
 

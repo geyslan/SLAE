@@ -1,4 +1,4 @@
-; Tiny Shell Bind TCP - Assembly Language
+; Tiny Shell Bind TCP Random Port - Assembly Language
 ; Linux/x86
 ;
 ; Written in 2013 by Geyslan G. Bem, Hacking bits
@@ -33,18 +33,21 @@
 ;
 
 
-; tiny_shell_bind_tcp
+; tiny_shell_bind_tcp_random_port
 ;
-; * 73 bytes
-; * null-free if the port is
+; * 57 bytes
+; * null-free
 ;
 ;
-; # nasm -f elf32 tiny_shell_bind_tcp.asm
-; # ld -m elf_i386 tiny_shell_bind_tcp.o -o tiny_shell_bind_tcp
+; # nasm -f elf32 tiny_shell_bind_tcp_random_port.asm
+; # ld -m elf_i386 tiny_shell_bind_tcp_random_port.o -o tiny_shell_bind_tcp_random_port
 ; # ./tiny_shell_bind_tcp
 ;
 ; Testing
-; # nc 127.0.0.1 11111
+; # ./tiny_shell_bind_tcp_random_port
+; # netstat -anp | grep shell
+; # nmap -sS 127.0.0.1 -p-  (It's necessary to use the TCP SYN scan option [-sS]; thus avoids that nmap connects to the port open by shellcode)
+; # nc 127.0.0.1 port
 
 
 global _start

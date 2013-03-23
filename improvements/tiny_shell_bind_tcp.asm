@@ -41,9 +41,9 @@
 ;
 ; # nasm -f elf32 tiny_shell_bind_tcp.asm
 ; # ld -m elf_i386 tiny_shell_bind_tcp.o -o tiny_shell_bind_tcp
-; # ./tiny_shell_bind_tcp
 ;
 ; Testing
+; # ./tiny_shell_bind_tcp
 ; # nc 127.0.0.1 11111
 
 
