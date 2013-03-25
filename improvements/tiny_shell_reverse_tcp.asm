@@ -83,7 +83,7 @@ _start:
         ; dup2(clientfd, ...)
 
         pop ecx                 ; pop the sockfd integer to use as the loop counter ecx
-        xchg ebx, eax           ; swapping registers values to put created sockfd in ebx as argument in next syscall ($
+        xchg ebx, eax           ; swapping registers values to put the accepted sockfd (client) in ebx as argument in next syscall (dup2)
 
 dup_loop:
         mov al, 63              ; syscall 63 - dup2
