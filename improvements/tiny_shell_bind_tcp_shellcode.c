@@ -1,52 +1,40 @@
 /*
 
- Tiny Shell Bind TCP Shellcode - C Language
- Linux/x86
-
- Written in 2013 by Geyslan G. Bem, Hacking bits
+ Tiny Shell Bind TCP Shellcode - C Language - Linux/x86
+ Copyright (C) 2013 Geyslan G. Bem, Hacking bits
 
    http://hackingbits.com
    geyslan@gmail.com
 
- This source is licensed under the Creative Commons
- Attribution-ShareAlike 3.0 Brazil License.
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
 
- To view a copy of this license, visit
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-   http://creativecommons.org/licenses/by-sa/3.0/
-
- You are free:
-
-    to Share - to copy, distribute and transmit the work
-    to Remix - to adapt the work
-    to make commercial use of the work
-
- Under the following conditions:
-   Attribution - You must attribute the work in the manner
-                 specified by the author or licensor (but
-                 not in any way that suggests that they
-                 endorse you or your use of the work).
-
-   Share Alike - If you alter, transform, or build upon
-                 this work, you may distribute the
-                 resulting work only under the same or
-                 similar license to this one.
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+
 /*
 
- tiny_shell_bind_tcp_shellcode
+   tiny_shell_bind_tcp_shellcode
 
- * 73 bytes
- * null-free if the port is
+   * 73 bytes
+   * null-free if the port is
 
 
- # gcc -m32 -fno-stack-protector -z execstack tiny_shell_bind_tcp_shellcode.c -o tiny_shell_bind_tcp_shellcode
+   # gcc -m32 -fno-stack-protector -z execstack tiny_shell_bind_tcp_shellcode.c -o tiny_shell_bind_tcp_shellcode
 
- Testing
- # ./tiny_shell_bind_tcp_shellcode
- # nc 127.0.0.1 11111
+   Testing
+   # ./tiny_shell_bind_tcp_shellcode
+   # nc 127.0.0.1 11111
 
 */
 

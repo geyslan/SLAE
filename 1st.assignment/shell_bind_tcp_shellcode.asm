@@ -1,50 +1,37 @@
-; Shell Bind TCP Shellcode - Assembly Language
-; Linux/x86
+; Shell Bind TCP Shellcode - Assembly Language - Linux/x86
+; Copyright (C) 2013 Geyslan G. Bem, Hacking bits
 ;
-; Written in 2013 by Geyslan G. Bem, Hacking bits
+;   http://hackingbits.com
+;   geyslan@gmail.com
 ;
-; http://hackingbits.com
-; geyslan@gmail.com
+; This program is free software: you can redistribute it and/or modify
+; it under the terms of the GNU General Public License as published by
+; the Free Software Foundation, either version 3 of the License, or
+; (at your option) any later version.
 ;
-; This source is licensed under the Creative Commons
-; Attribution-ShareAlike 3.0 Brazil License.
+; This program is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
 ;
-; To view a copy of this license, visit
+; You should have received a copy of the GNU General Public License
+; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+;   shell_bind_tcp_shellcode
 ;
-;   http://creativecommons.org/licenses/by-sa/3.0/
-;
-; You are free:
-;
-;    to Share - to copy, distribute and transmit the work
-;    to Remix - to adapt the work
-;    to make commercial use of the work
-;
-; Under the following conditions:
-;   Attribution - You must attribute the work in the manner
-;                 specified by the author or licensor (but
-;                 not in any way that suggests that they
-;                 endorse you or your use of the work).
-;
-;   Share Alike - If you alter, transform, or build upon
-;                 this work, you may distribute the
-;                 resulting work only under the same or
-;                 similar license to this one.
+;   * 103 bytes
+;   * null-bytes free
+;   * avoids SIGSEGV when reconnecting, setting SO_REUSEADDR (TIME_WAIT)
+;   * the port number is easily changeable (3th and 4th bytes of the shellcode)
 ;
 ;
-; shell_bind_tcp_shellcode
+;   # nasm -f elf32 shell_bind_tcp_shellcode.asm -o shell_bind_tcp_shellcode.o -g
+;   # ld -m elf_i386 shell_bind_tcp_shellcode.o -o shell_bind_tcp_shellcode
+;   # ./shell_bind_tcp_shellcode
 ;
-; * 103 bytes
-; * null-bytes free
-; * avoids SIGSEGV when reconnecting, setting SO_REUSEADDR (TIME_WAIT)
-; * the port number is easily changeable (3th and 4th bytes of the shellcode)
-;
-;
-; # nasm -f elf32 shell_bind_tcp_shellcode.asm -o shell_bind_tcp_shellcode.o -g
-; # ld -m elf_i386 shell_bind_tcp_shellcode.o -o shell_bind_tcp_shellcode
-; # ./shell_bind_tcp_shellcode
-;
-; Testing
-; # nc 127.0.0.1 11111
+;   Testing
+;   # nc 127.0.0.1 11111
 
 
 global _start

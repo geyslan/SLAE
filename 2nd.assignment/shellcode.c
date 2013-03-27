@@ -1,54 +1,41 @@
 /*
 
- Shell Reverse TCP Shellcode - C Language
- Linux/x86
-
- Written in 2013 by Geyslan G. Bem, Hacking bits
+ Shell Reverse TCP Shellcode - C Language - Linux/x86
+ Copyright (C) 2013 Geyslan G. Bem, Hacking bits
 
    http://hackingbits.com
    geyslan@gmail.com
 
- This source is licensed under the Creative Commons
- Attribution-ShareAlike 3.0 Brazil License.
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
 
- To view a copy of this license, visit
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-   http://creativecommons.org/licenses/by-sa/3.0/
-
- You are free:
-
-    to Share - to copy, distribute and transmit the work
-    to Remix - to adapt the work
-    to make commercial use of the work
-
- Under the following conditions:
-   Attribution - You must attribute the work in the manner
-                 specified by the author or licensor (but
-                 not in any way that suggests that they
-                 endorse you or your use of the work).
-
-   Share Alike - If you alter, transform, or build upon
-                 this work, you may distribute the
-                 resulting work only under the same or
-                 similar license to this one.
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
 /*
 
- shell_reverse_tcp_shellcode
+   shell_reverse_tcp_shellcode
 
- * 72 bytes
- * null-bytes free if the port and address are
- * the ip address and port number are easily changeable (2nd to 5th bytes are the IP) and (9th and 10th are the Port)
- 
+   * 72 bytes
+   * null-bytes free if the port and address are
+   * the ip address and port number are easily changeable (2nd to 5th bytes are the IP) and (9th and 10th are the Port)
 
- # gcc -m32 -fno-stack-protector -z execstack shellcode.c -o shellcode
- # ./shellcode
 
- Testing
- # nc -l 127.1.1.1 55555
- # ./shellcode 
+   # gcc -m32 -fno-stack-protector -z execstack shellcode.c -o shellcode
+   # ./shellcode
+
+   Testing
+   # nc -l 127.1.1.1 55555
+   # ./shellcode
 
 */
 
