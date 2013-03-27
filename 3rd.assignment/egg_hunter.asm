@@ -29,7 +29,6 @@
 ;                 this work, you may distribute the
 ;                 resulting work only under the same or
 ;                 similar license to this one.
-;
 
 
 ; egg_hunter

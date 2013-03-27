@@ -1,4 +1,4 @@
-; Tiny Shell Bind TCP - Assembly Language
+; Egg - Assembly Language
 ; Linux/x86
 ;
 ; Written in 2013 by Geyslan G. Bem, Hacking bits
@@ -29,8 +29,6 @@
 ;                 this work, you may distribute the
 ;                 resulting work only under the same or
 ;                 similar license to this one.
-;
-;
 
 
 ; egg
