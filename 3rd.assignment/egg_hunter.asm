@@ -73,7 +73,7 @@ alignbyte:
 	int 0x80		; kernel interruption
 
 
-	; verifies if memory is not readable
+	; verifies if memory is not readable (bad address = EFAULT = 0xf2 = -14)
 	; as the offset is not from a path name, access will never result 0, so we have to compare the error result with 0xf2
 	cmp al, 0xf2
 
