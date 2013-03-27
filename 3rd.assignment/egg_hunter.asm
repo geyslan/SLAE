@@ -33,7 +33,7 @@
 
 ; egg_hunter
 ;
-; * 39 bytes
+; * 40 bytes
 ; * null-free if the signature is
 ;
 ;
@@ -50,6 +50,7 @@ section .text
 
 _start:
 	; setting the registers
+	cld			; clear the direction flag (DF) to use scasd correctly
 	xor esi, esi
 	mul esi
 alignpage:
