@@ -90,10 +90,8 @@ def main():
 
             hasGarbage = False
 
-            for x in a:
-                if (x == "x"):
-                    hasGarbage = True
-                    break
+            if "x" in a:
+                hasGarbage = True                
            
             if (len(a) < 2 or hasGarbage == False):
                 print("  Pattern has to be at least two differents bytes. Eg. -p bx\n")
@@ -102,6 +100,10 @@ def main():
             pattern = a
 
         elif o in ("-s", "--shellcode"):
+            if (garbageByte in a.encode("ascii", "surrogateescape")):
+                print("  Garbage Byte '" + garbageByte + "' cannot be in the shellcode! Choose another!\n")         
+                sys.exit()
+
             shellcode = a.encode("utf_8", "surrogateescape")
             hasShellcode = True
 
@@ -110,12 +112,6 @@ def main():
         sys.exit()
     
     
-    #print(('\x' + garbageByte).encode("utf_8", "surrogateescape"))
-    #if garbageByte in shellcode:
-    #    print("  Garbage Byte '" + garbageByte + "' cannot be in the shellcode! Choose another!\n")
-    #    sys.exit()
-    
-        
     encoded = '"'
     encoded2 = ""
     encoded3 = '"'
@@ -142,7 +138,7 @@ def main():
             encoded2 += "0x" + garbageByte + ","
 
         if (pattern[p] == "b"):
-            encoded += "\\x%02x" % bytearray(shellcode)[s]
+            encoded += "\\x%02x" % bytearray(shellcode)[s]            
             encoded2 += "0x%02x," % bytearray(shellcode)[s]
             s += 1
 
