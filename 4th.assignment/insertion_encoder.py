@@ -60,7 +60,8 @@ def usage ():
 def main():
     garbageByte = "3f"
     pattern = "xb"
-    shellcode = ""
+    endWord = "f1f1"
+    shellcode = ""    
 
     try:
         opts, args = getopt.getopt(sys.argv[1:], "hg:p:s:")
@@ -83,6 +84,7 @@ def main():
             if (len(a) != 2):
                 print("  Garbage has to be one byte length. Eg. -g 3f\n")
                 sys.exit()
+            garbageByte = a
             
         elif o in ("-p", "--pattern"):
 
@@ -104,17 +106,24 @@ def main():
             hasShellcode = True
 
     if (hasShellcode == False):
-        print("  Is necessary to inform a shellcode. Eg. -s $'\\xcd\\x80'")
+        print("  Is necessary to inform a shellcode. Eg. -s $'\\xcd\\x80'\n")
         sys.exit()
-        
+    
+    
+    #print(('\x' + garbageByte).encode("utf_8", "surrogateescape"))
+    #if garbageByte in shellcode:
+    #    print("  Garbage Byte '" + garbageByte + "' cannot be in the shellcode! Choose another!\n")
+    #    sys.exit()
+    
         
     encoded = '"'
     encoded2 = ""
-
+    encoded3 = '"'
+    
     print("Insertion Shellcode Encoder")
     print("http://hackingbits.com")
     print("https://github.com/geyslan/SLAE.git")
-    print("License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n")
+    print("License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\n")
 
     print("Encoded shellcode:")
 
@@ -145,16 +154,33 @@ def main():
             encoded2 = encoded2[:-1]
             break
 
+    encoded3 += r"\xeb\x1a\x5e\x8d\x3e\x31\xc9\x8b\x1c\x0e"
+    encoded3 += r"\x41\x66\x81\xfb"
+    encoded3 += r"\xf1\xf1"           # <- End Signature
+    encoded3 += r"\x74\x0f\x80\xfb"
+    encoded3 += r"\x" + garbageByte   # <- Garbage Byte
+    encoded3 += r"\x74\xf0\x88\x1f\x47\xeb\xeb\xe8\xe1\xff"
+    encoded3 += r"\xff\xff"
+    encoded3 += encoded[+1:]
+    encoded3 += r"\xf1\xf1"
+    
     encoded += '"'
+    encoded3 += '";'
 
     print()
     print(encoded)
     print()
     print(encoded2)
     print()
-
+    print()
+    print("Encoded shellcode with decoder:\n")
+    print(encoded3)
+    print()
+    
+    print()
     print("Length before: %d" % len(bytearray(shellcode)))
     print("Length after: %d" % ((len(encoded) - 2) /4))
+    print("Length with decoder: %d" % ((len(encoded3) - 2) /4))   
 
 
 if __name__ == "__main__":
