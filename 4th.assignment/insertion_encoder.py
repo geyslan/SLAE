@@ -175,7 +175,7 @@ def main():
     encoded3 += r"\x41\x66\x81\xfb"
     encoded3 += end 
     encoded3 += r"\x74\x0f\x80\xfb"
-    encoded3 += r"\x" + garbageByte   # <- Garbage Byte
+    encoded3 += r"\x" + garbageByte
     encoded3 += r"\x74\xf0\x88\x1f\x47\xeb\xeb\xe8\xe1\xff"
     encoded3 += r"\xff\xff"
     encoded3 += encoded[+1:]
