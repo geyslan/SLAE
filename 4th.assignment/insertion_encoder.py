@@ -166,8 +166,10 @@ def main():
         
         if (s == len(bytearray(shellcode)) and p == 0):
             break
-    
-    encoded2 = encoded.replace("\\x", ",0x")[+2:]
+
+    encoded += '";'
+
+    encoded2 = encoded.replace("\\x", ",0x")[+2:-2]
 
     end = r"\x" + endSignature[:-2] + r"\x" + endSignature[-2:]
     encoded3 += r"\xeb\x1a\x5e\x8d\x3e\x31\xc9\x8b\x1c\x0e"
@@ -177,10 +179,9 @@ def main():
     encoded3 += r"\x" + garbageByte
     encoded3 += r"\x74\xf0\x88\x1f\x47\xeb\xeb\xe8\xe1\xff"
     encoded3 += r"\xff\xff"
-    encoded3 += encoded[+1:]
+    encoded3 += encoded[+1:-2]
     encoded3 += end
     
-    encoded += '"'
     encoded3 += '";'
 
     encoded4 = encoded3.replace("\\x" , ",0x")[+2:-2]
