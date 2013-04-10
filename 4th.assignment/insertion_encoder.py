@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Insertion Encoder - Python Language
+# Multi-pattern Shellcode Insertion Encoder - Python Language
 # Copyright (C) 2013 Geyslan G. Bem, Hacking bits
 #
 #   http://hackingbits.com
@@ -116,7 +116,7 @@ def main():
 
     if (int("0x" + garbageByte, 16) in bytearray(shellcode)):
         print("  The shellcode being processed contains the byte '0x" + garbageByte + "'. " \
-              "Please choose another Gargage!\n")
+              "Please choose another Garbage!\n")
         sys.exit()
 
     endfirst = int("0x" + endSignature[:-2], 16)
