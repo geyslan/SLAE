@@ -84,7 +84,6 @@ def main():
 
     for o, a in opts:
 
-
         if o in ("-h", "--help"):
             usage()
             sys.exit()
@@ -113,7 +112,7 @@ def main():
 
     if (not shellcode):
         print("  Is necessary to inform a shellcode. Eg. -s $'\\xcd\\x80'\n")
-        sys.exit()    
+        sys.exit()
 
     if (int("0x" + garbageByte, 16) in bytearray(shellcode)):
         print("  The shellcode being processed contains the byte '0x" + garbageByte + "'. " \
@@ -134,6 +133,7 @@ def main():
     encoded = '"'
     encoded2 = ""
     encoded3 = '"'
+    encoded4 = ""
     
     print("Insertion Shellcode Encoder")
     print("http://hackingbits.com")
@@ -158,8 +158,8 @@ def main():
 
         if (s < len(shellcode)):
             if (pattern[p] == "b"):
-                encoded += "\\x%02x" % bytearray(shellcode)[s]            
-                encoded2 += "0x%02x," % bytearray(shellcode)[s]            
+                encoded += "\\x%02x" % shellcode[s]            
+                encoded2 += "0x%02x," % shellcode[s]            
                 s += 1
 
         p += 1
@@ -184,17 +184,23 @@ def main():
     encoded += '"'
     encoded3 += '";'
 
+    encoded4 = encoded3.replace("\\x" , ",0x")[+2:-2]
+
     print()
     print(encoded)
     print()
     print(encoded2)
     print()
     print()
-    print("Encoded shellcode with decoder built-in:\n")
+
+    print("Encoded shellcode with decoder built-in:")
+    print()
     print(encoded3)
     print()
-    
+    print(encoded4)
     print()
+    print()
+
     print("Length before: %d" % len(bytearray(shellcode)))
     print("Length after: %d" % ((len(encoded) - 2) /4))
     print("Length with decoder: %d" % ((len(encoded3) - 2) /4))
