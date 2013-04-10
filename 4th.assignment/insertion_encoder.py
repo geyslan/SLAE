@@ -154,12 +154,10 @@ def main():
 
         if (pattern[p] == "x"):
             encoded += "\\x" + garbageByte
-            encoded2 += "0x" + garbageByte + ","
 
         if (s < len(shellcode)):
             if (pattern[p] == "b"):
-                encoded += "\\x%02x" % shellcode[s]            
-                encoded2 += "0x%02x," % shellcode[s]            
+                encoded += "\\x%02x" % shellcode[s]
                 s += 1
 
         p += 1
@@ -167,9 +165,10 @@ def main():
             p = 0
         
         if (s == len(bytearray(shellcode)) and p == 0):
-            encoded2 = encoded2[:-1]
             break
     
+    encoded2 = encoded.replace("\\x", ",0x")[+2:]
+
     end = r"\x" + endSignature[:-2] + r"\x" + endSignature[-2:]
     encoded3 += r"\xeb\x1a\x5e\x8d\x3e\x31\xc9\x8b\x1c\x0e"
     encoded3 += r"\x41\x66\x81\xfb"
