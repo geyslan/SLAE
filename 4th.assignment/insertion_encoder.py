@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Multi-pattern Shellcode Insertion Encoder - Python Language
+# Multi-pattern Insertion Shellcode Encoder - Python Language
 # Copyright (C) 2013 Geyslan G. Bem, Hacking bits
 #
 #   http://hackingbits.com
@@ -135,7 +135,7 @@ def main():
     encoded3 = '"'
     encoded4 = ""
     
-    print("Insertion Shellcode Encoder")
+    print("Multi-pattern Insertion Shellcode Encoder")
     print("http://hackingbits.com")
     print("https://github.com/geyslan/SLAE.git")
     print("License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\n")
