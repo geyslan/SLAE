@@ -33,8 +33,8 @@
 ;   # ld -m elf_i386 insertion_decoder.o -o insertion_decoder
 ;
 ;   Testing
-;   "This binary will not work, because it attempts to modify the text segment where relies the coded shellcode"
-;   "To test, extract the shellcode of this compiled binary and launch it from other binary"
+;   "This binary will not work, because it attempts to modify the text segment where relies the encoded shellcode"
+;   "To test, extract the shellcode of this compiled binary and launch it from another"
 	
 
 
