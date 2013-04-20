@@ -35,6 +35,8 @@ section .text
 
 _start:
 
+	; int open(const char *pathname, int flags);
+
 	xor ecx, ecx
 	mul ecx
 	mov al, 5
@@ -45,6 +47,8 @@ _start:
 	mov ebx, esp
 	int 0x80
 
+	; ssize_t read(int fd, void *buf, size_t count);
+
 	xchg eax, ebx
 	xchg ecx, eax
 	mov al, 3
@@ -53,11 +57,15 @@ _start:
 	inc edx
 	int 0x80
 
+	; ssize_t write(int fd, const void *buf, size_t count);
+
 	xchg edx, eax
 	xor eax, eax
 	mov al, 4
 	mov bl, 1
 	int 0x80
+
+	; void _exit(int status);
   
 	xchg eax, ebx
 	int 0x80
