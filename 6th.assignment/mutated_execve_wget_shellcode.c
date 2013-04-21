@@ -25,7 +25,7 @@
 
    mutated_execve_wget_shellcode
 
-  *  bytes
+  * 96 bytes
   * null-free
   * mutated isn't polymorphic (shellcode does not replicate itself to be called polymorphic)
 

