@@ -20,7 +20,7 @@
 
 ;   egg_hunter
 ;
-;   * 40 bytes
+;   * 38 bytes
 ;   * null-free if the signature is
 ;
 ;
@@ -38,8 +38,8 @@ section .text
 _start:
 	; setting the registers
 	cld			; clear the direction flag (DF) to use scasd correctly
-	xor esi, esi
-	mul esi
+	xor ecx, ecx
+	mul ecx
 alignpage:
 	; align page
 	or dx, 0xfff 		; is the same as "add dx, 4095" (PAGE_SIZE)
@@ -55,8 +55,7 @@ alignbyte:
 
 	lea ebx, [edx + 4]	; alignment to validate the last four bytes of the signature
 
-	push esi		; F_OK 0
-	pop ecx
+				; ecx already contains 0 (F_OK)
 
 	int 0x80		; kernel interruption
 
