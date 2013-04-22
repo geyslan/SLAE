@@ -20,7 +20,6 @@
 
 ;   egg
 ;
-;
 ;   # nasm -f elf32 egg.asm
 ;   # ld -m elf_i386 egg.o -o egg
 ;
