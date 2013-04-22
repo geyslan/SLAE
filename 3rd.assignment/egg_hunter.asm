@@ -48,7 +48,7 @@ alignbyte:
 
 	; Accessing the memory offset
 	; int access(const char *pathname, int mode);
-	; access(memoryaddress, 4)
+	; access(memoryaddress, 0)
 
 	push 33			; __NR_access 33
 	pop eax
