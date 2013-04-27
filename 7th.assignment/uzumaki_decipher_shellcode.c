@@ -26,6 +26,7 @@
    uzumaki_decipher_shellcode
 
   * decipher has 29 bytes (the final amount depends on the shellcode length)
+  * it deciphers the uzumaki algorithm, a custom stream cipher algorithm ( ADD [static], XOR [static] and XOR [pseudorandom] )
   * null-free
 
 
