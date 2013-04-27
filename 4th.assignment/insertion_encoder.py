@@ -80,8 +80,6 @@ def main():
         usage()
         sys.exit()
 
-    hasShellcode = False
-
     for o, a in opts:
 
         if o in ("-h", "--help"):
