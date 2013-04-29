@@ -23,7 +23,7 @@
 '''
    uzumaki_crypter
 
-   * uses the uzumaki cipher, a custom stream cipher algorithm ( ADD [static], XOR [static] and XOR [pseudorandom] )
+   * uses the uzumaki cipher, a custom stream cipher algorithm ( (XOR [static] and XOR [pseudorandom]), ADD [static] )
 
 
    # ./uzumaki_crypter.py -h

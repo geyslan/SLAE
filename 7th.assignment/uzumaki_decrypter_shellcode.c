@@ -26,7 +26,8 @@
    uzumaki_decrypter_shellcode
 
   * decrypter has 29 bytes (the final amount depends on the shellcode length)
-  * it decrypts the uzumaki cipher, a custom stream cipher algorithm ( ADD [static], XOR [static] and XOR [pseudorandom] )
+  * it decrypts the uzumaki cipher, a custom stream cipher algorithm ( (XOR [static] and XOR [pseudorandom]), ADD [static] )
+  * to encrypt the shellcode use the Uzumaki Crypter <https://github.com/geyslan/SLAE/blob/master/7th.assignment/uzumaki_crypter.py>
   * null-free
 
 

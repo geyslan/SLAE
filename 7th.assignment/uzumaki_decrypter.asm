@@ -21,7 +21,7 @@
 ;   uzumaki_decrypter
 ;
 ;   * decrypter has 29 bytes (the final amount depends on the shellcode length)
-;   * it decrypts the uzumaki cipher, a custom stream cipher algorithm ( ADD [static], XOR [static] and XOR [pseudorandom] )
+;   * it decrypts the uzumaki cipher, a custom stream cipher algorithm ( (XOR [static] and XOR [pseudorandom]), ADD [static] )
 ;   * null-free
 ;
 ;
