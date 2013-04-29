@@ -107,7 +107,7 @@ def main():
         if (x == 0):
             tempbyte = shellcode[x]
         else:
-            tempbyte = ((shellcode[x] ^ (shellcode[x-1] ^ int("0x" + xorByte, 16) )) + int("0x" + addByte, 16))
+            tempbyte = ((shellcode[x-1] ^ (shellcode[x] ^ int("0x" + xorByte, 16) )) + int("0x" + addByte, 16))
         if (tempbyte > 0xff or tempbyte <= 0x00):
             print("  A ciphed byte value cannot be higher than 0xff or equal to 0x00. Please change the value of the option 'ADD' or/and of the option 'XOR'.\n")
             sys.exit()
