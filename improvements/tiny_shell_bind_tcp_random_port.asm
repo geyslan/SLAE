@@ -34,7 +34,6 @@
 ; POSSIBILITY OF SUCH DAMAGE.
 
 
-
 ;   tiny_shell_bind_tcp_random_port
 ;
 ;   * 57 bytes
