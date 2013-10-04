@@ -103,7 +103,7 @@ _start:
         mov al, 102		; syscall 102 - socketcall
         inc ebx			; socketcall type (sys_accept 5)
 
-	; accept arguments	; here we just don't need do nothing, the ecx already points to sockfd, NULL and 2
+	; accept arguments	; here we need only do nothing, the ecx already points to sockfd, NULL and 2
 				; you ask me: but the correct isn't sockfd, NULL, NULL? Well, 'man accept' to figure out ;D)
 
 	int 0x80		; kernel interruption

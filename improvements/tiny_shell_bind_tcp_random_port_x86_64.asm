@@ -101,7 +101,7 @@ _start:
 	; int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
 	; accept(sockfd, NULL, NULL)
 
-	; accept arguments	; here we just need do nothing, the rdi already contains the sockfd,
+	; accept arguments	; here we need only do nothing, the rdi already contains the sockfd,
 				; likewise rsi and rdx contains 0
 
         mov al, 43		; syscall 43 - accept
