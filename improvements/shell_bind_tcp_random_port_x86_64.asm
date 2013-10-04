@@ -35,17 +35,17 @@
 ; POSSIBILITY OF SUCH DAMAGE.
 
 
-;   tiny_shell_bind_tcp_random_port_x86_64
+;   shell_bind_tcp_random_port_x86_64
 ;
 ;   * 57 bytes
 ;   * null-free
 ;
 ;
-;   # nasm -f elf64 tiny_shell_bind_tcp_random_port_x86_64.asm
-;   # ld -m elf_x86_64 tiny_shell_bind_tcp_random_port_x86_64.o -o tiny_shell_bind_tcp_random_port_x86_64
+;   # nasm -f elf64 shell_bind_tcp_random_port_x86_64.asm
+;   # ld -m elf_x86_64 shell_bind_tcp_random_port_x86_64.o -o shell_bind_tcp_random_port_x86_64
 ;
 ;   Testing
-;   # ./tiny_shell_bind_tcp_random_port_x86_64
+;   # ./shell_bind_tcp_random_port_x86_64
 ;   # netstat -anp | grep shell
 ;   # nmap -sS 127.0.0.1 -p-  (It's necessary to use the TCP SYN scan option [-sS]; thus avoids that nmap connects to the port open by shellcode)
 ;   # nc 127.0.0.1 port

