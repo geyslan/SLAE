@@ -25,6 +25,7 @@
 /*
 
    shell_bind_tcp_random_port_shellcode_x86_64
+     assembly source: https://github.com/geyslan/SLAE/blob/master/improvements/shell_bind_tcp_random_port_x86_64.asm
 
    * 57 bytes
    * null-free
