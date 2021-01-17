@@ -41,10 +41,8 @@
    # ./tiny_shell_bind_tcp_random_port_shellcode_x86_64
    Second terminal (Discover the port and connect)
    # netstat -anp | grep shell
-   # nmap -sS 127.0.0.1 -p- (It's necessary to use the TCP SYN scan option
-   [-sS], avoiding nmap to connect to the port open by shellcode) # nc 127.0.0.1
-   port
-
+   # nmap -sS 127.0.0.1 -p- (It's necessary to use the TCP SYN scan option [-sS],
+			     avoiding nmap to connect to the port open by shellcode)
 */
 
 #include <stdio.h>
