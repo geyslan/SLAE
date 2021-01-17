@@ -43,6 +43,7 @@
    # netstat -anp | grep shell
    # nmap -sS 127.0.0.1 -p- (It's necessary to use the TCP SYN scan option [-sS],
 			     avoiding nmap to connect to the port open by shellcode)
+   # nc 127.0.0.1 port
 */
 
 #include <stdio.h>
