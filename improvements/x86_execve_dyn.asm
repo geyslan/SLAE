@@ -78,7 +78,7 @@ code:
 
 ; for build the shellcode comment the line below (section .data)
 ; for test this assembly let it uncommented.
-;section .data
+section .data
 
 getpc:
 	call code            ; return to code saving pc (dynamic cmd pointer) into the stack
