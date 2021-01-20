@@ -114,7 +114,7 @@ _start:
 	syscall			; kernel interruption
 
 
-	; Creating a interchangeably copy of the 3 file descriptors (stdin, stdout, stderr)
+	; Creating a interchangeably copy of the file descriptors
 	; int dup2(int oldfd, int newfd);
 	; dup2(clientfd, ...)
 
