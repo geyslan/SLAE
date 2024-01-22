@@ -46,7 +46,7 @@
 ;     tiny_shell_bind_tcp_random_port_x86_64
 ;
 ;   Testing
-;   Fist terminal
+;   First terminsal
 ;   # ./tiny_shell_bind_tcp_random_port_x86_64
 ;   Second terminal (Discover the port and connect)
 ;   # netstat -anp | grep shell 
